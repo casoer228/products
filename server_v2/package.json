@@ -1,0 +1,16 @@
+{
+  "name": "server_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/swagger": "^4.7.12",
+    "typeorm": "^0.2.30"
+  }
+}
