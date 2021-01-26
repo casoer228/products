@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  nginx: 
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ./nginx.conf:../nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443
+  postgres:
+    ports:
+      - "5436:5432"
+    restart: always
+    image: postgres:9.6.5-alpine
+    volumes:
+      - ./db:/var/lib/postgresql/data
+      - ./postgres-initdb.sh:/docker-entrypoint-initdb.d/init.sh
+    environment:
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+  server: 
+    build: ../server_v2
+    ports:
+      - 3030:3030
+    depends_on:
+      - postgres
+    environment:
+      TYPEORM_HOST: postgres
+      TYPEORM_DATABASE: products
+      TYPEORM_USERNAME: $DB_USER
+      TYPEORM_PASSWORD: $DB_PASSWORD
