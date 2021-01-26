@@ -7,11 +7,11 @@ export class ProductHistory {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    productId: number;
+    // @Column()
+    // productId: number;
 
-    @ManyToOne(() => Product)
-    product: Product;
+    // @ManyToOne(() => Product)
+    // product: Product;
 
     @Column({ type: 'date' })
     createdAt: Date;

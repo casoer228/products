@@ -120,11 +120,11 @@ export class ProductsService extends TypeOrmCrudService<Product> {
                 })
             }
 
-            await productsHistoryRepository.save({
-                createdAt: currentDate,
-                productId: productsMap.get(productHash).id,
-                price: providerProduct.price
-            })
+            // await productsHistoryRepository.save({
+            //     createdAt: currentDate,
+            //     productId: productsMap.get(productHash).id,
+            //     price: providerProduct.price
+            // })
 
         }
 
