@@ -10,6 +10,7 @@ services:
       - 5000:80
     depends_on:
       - server
+      - web
   postgres:
     ports:
       - "5436:5432"
@@ -35,3 +36,7 @@ services:
       SERVER_PORT: 2000
       BUCKWHEAT_SEARCH_STRING: крупа гречана
       ZAKAZ_UA_API_URL: https://stores-api.zakaz.ua
+  web: 
+    build: ../web
+    ports:
+      - 5500:5500
