@@ -7,6 +7,7 @@ import {
 import ProductsSearchForm from './containers/ProductsSearchForm';
 import ProductsStatistics from './containers/ProductsStatistics';
 import ProductsGrid from './containers/ProductsGrid';
+import Sort from './components/Sort';
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
               <Link className="nav-link" to="/statistics">Статистика</Link>
             </li>
           </ul>
+          </div>
+          <div className="col">
+            <Sort />
           </div>
           <div className="col">
             <ProductsSearchForm />

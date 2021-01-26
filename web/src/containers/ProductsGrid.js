@@ -12,11 +12,12 @@ const ProductsGrid = () => {
   const [isLoading, setIsLoading] = useState(true);
   const urlParams = new URLSearchParams(window.location.search);
   const q = urlParams.get('q');
+  const sort = urlParams.get('sort');
 
   useEffect(() => {
     setIsLoading(true);
 
-    productsService.get({ q })
+    productsService.get({ q, sort })
       .then(setProducts)
       .finally(() => setIsLoading(false));
   }, [location]);
