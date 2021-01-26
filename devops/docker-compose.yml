@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  nginx: 
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 5000:80
+    depends_on:
+      - server
+      - web
+  postgres:
+    ports:
+      - "5436:5432"
+    restart: always
+    image: postgres:9.6.5-alpine
+    volumes:
+      - ./db:/var/lib/postgresql/data
+      - ./postgres-initdb.sh:/docker-entrypoint-initdb.d/init.sh
+    environment:
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+  server: 
+    build: ../server_v2
+    depends_on:
+      - postgres  
+    ports:
+      - 2000:2000
+    environment:
+      TYPEORM_HOST: postgres
+      TYPEORM_DATABASE: products
+      TYPEORM_USERNAME: $DB_USER
+      TYPEORM_PASSWORD: $DB_PASSWORD
+      SERVER_PORT: 2000
+      BUCKWHEAT_SEARCH_STRING: крупа гречана
+      ZAKAZ_UA_API_URL: https://stores-api.zakaz.ua
+  web: 
+    build: ../web
+    ports:
+      - 5500:5500
