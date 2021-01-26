@@ -7,8 +7,11 @@ import { ProductsHistoryService } from "../providers/products-history.service";
     model: {
         type: ProductHistory,
     },
+    query: {
+        alwaysPaginate: true
+    },
     routes: {
-        only: ['getManyBase'],
+        only: ['getManyBase']
     }
 })
 @Controller('/products-history')

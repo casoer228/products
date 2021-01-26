@@ -12,6 +12,9 @@ import { ProductsService } from "../providers";
     },
     routes: {
         only: ['getManyBase']
+    },
+    query: {
+        alwaysPaginate: true,
     }
 })
 @Controller('/products')

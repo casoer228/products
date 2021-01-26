@@ -28,7 +28,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup(swagger, app, document, { customJs: 'extension.js' });
 
-  await app.listen(3030);
+  await app.listen(process.env.SERVER_PORT || 3030);
   console.log('app started')
 }
 

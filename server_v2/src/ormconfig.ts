@@ -22,7 +22,7 @@ module.exports = {
   port: env.TYPEORM_PORT,
   username: env.TYPEORM_USERNAME || 'postgres',
   password: env.TYPEORM_PASSWORD || 'postgres',
-  database: env.TYPEORM_DATABASE || 'products_v2',
+  database: env.TYPEORM_DATABASE || 'products',
   logging: env.TYPEORM_LOGGING != false,
   synchronize: !watch && env.TYPEORM_MIGRATIONS_RUN != true,
   migrationsRun: !watch && env.TYPEORM_MIGRATIONS_RUN != true,
